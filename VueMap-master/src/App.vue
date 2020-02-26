@@ -1,7 +1,8 @@
-
 <template lang="pug">
   #app
     h3.title {{locationName}}
+    .closeBtn(@click='closemap') close
+    Banner
     .mapRapper(:style="{width: mapWidthpx, height: mapHeightpx}")
       Country(:width="mapWidth" :height="mapHeight" @getCountryName="showName" :scale="scaleMap" ref="_country")
       //- transition-group(name="fade")
@@ -27,9 +28,8 @@
       Taitung(@closemap="closemap" @getCountryName="showName" v-if="focusContry['臺東縣']" :width="mapWidth" :height="mapHeight"  :scale="scaleMap" :zoom="zoom")
       Taoyuan(@closemap="closemap" @getCountryName="showName" v-if="focusContry['桃園市']" :width="mapWidth" :height="mapHeight"  :scale="scaleMap" :zoom="zoom")
       Yunlin(@closemap="closemap" @getCountryName="showName" v-if="focusContry['雲林縣']" :width="mapWidth" :height="mapHeight"  :scale="scaleMap" :zoom="zoom")
-
-
-
+      informationBTN
+      
 
 </template>
 
@@ -58,7 +58,8 @@ import Matsu from './components/countrys/Matsu.vue'
 import Kinmen from './components/countrys/Kinmen.vue'
 
 import Country from "./components/countrys/Country";
-import decorate from"./components/decorate";
+import Banner from"./components/Banner";
+import informationBTN from"./components/informationBTN"
 import { mapState, mapMutations } from "vuex"; //註冊 action 和 state
 
 
@@ -66,7 +67,8 @@ import { mapState, mapMutations } from "vuex"; //註冊 action 和 state
 export default {
   name: "app",
   components: {
-    decorate,
+    Banner,
+    informationBTN,
     Country,
     Ilan,
     Hsinchu,
@@ -97,7 +99,7 @@ export default {
       locationName: "彰化縣",
       mapWidth: "900",
       mapHeight: "900",
-      scaleMap: 7200,
+      scaleMap: 8500,
       window: {
       width: 0,
       height: 0
@@ -163,7 +165,7 @@ export default {
   font-size: 4rem
   z-index: 999
   position: absolute
-  right: calc(75%)
+  right: calc(25%)
   top: 10rem
   color: #4D7EA2
   // filter: drop-shadow(5px 5px 0px black)
@@ -199,6 +201,7 @@ body, html
 
 
 #app
+
   font-family:  Microsoft JhengHei 
   -webkit-font-smoothing: antialiased
   -moz-osx-font-smoothing: grayscale
@@ -214,15 +217,27 @@ body, html
   width: 375px
   height: 667px
   margin-right: 10rem
-  margin-top:3rem
+  // margin-top:3rem
 
-
+.closeBtn
+  position:fixed
+  top:0
+  left:0
+  font-size:2rem
+  z-index:999
 
 .fade-enter-active, .fade-leave-active
   transition: 5s
 
 .fade-enter, .fade-leave-to
   opacity: 0
+
+
+
+
+
+
+
 
 
 </style>
