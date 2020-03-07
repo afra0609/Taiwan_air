@@ -2,6 +2,10 @@
 <template lang="pug">
   #app
     h3.title {{locationName}}
+<<<<<<< Updated upstream
+=======
+    .closeBtn(@click='closemap') close
+>>>>>>> Stashed changes
     .mapRapper(:style="{width: mapWidthpx, height: mapHeightpx}")
       Country(:width="mapWidth" :height="mapHeight" @getCountryName="showName" :scale="scaleMap" ref="_country")
       //- transition-group(name="fade")
@@ -27,9 +31,18 @@
       Taitung(@closemap="closemap" @getCountryName="showName" v-if="focusContry['臺東縣']" :width="mapWidth" :height="mapHeight"  :scale="scaleMap" :zoom="zoom")
       Taoyuan(@closemap="closemap" @getCountryName="showName" v-if="focusContry['桃園市']" :width="mapWidth" :height="mapHeight"  :scale="scaleMap" :zoom="zoom")
       Yunlin(@closemap="closemap" @getCountryName="showName" v-if="focusContry['雲林縣']" :width="mapWidth" :height="mapHeight"  :scale="scaleMap" :zoom="zoom")
+<<<<<<< Updated upstream
 
 
 
+=======
+      Banner 
+      informationBTN
+      Bigboard
+      ColorCode
+     
+      
+>>>>>>> Stashed changes
 
 </template>
 
@@ -57,8 +70,19 @@ import Taoyuan from './components/countrys/Taoyuan.vue'
 import Matsu from './components/countrys/Matsu.vue'
 import Kinmen from './components/countrys/Kinmen.vue'
 
+<<<<<<< Updated upstream
 import Country from "./components/countrys/Country";
 import decorate from"./components/decorate";
+=======
+import Country from "./components/countrys/Country"
+import Banner from"./components/Banner"
+import informationBTN from"./components/informationBTN"
+import Bigboard from "./components/Bigboard"
+import ColorCode from"./components/ColorCode"
+
+
+
+>>>>>>> Stashed changes
 import { mapState, mapMutations } from "vuex"; //註冊 action 和 state
 
 
@@ -66,7 +90,14 @@ import { mapState, mapMutations } from "vuex"; //註冊 action 和 state
 export default {
   name: "app",
   components: {
+<<<<<<< Updated upstream
     decorate,
+=======
+    Banner,
+    informationBTN,
+    Bigboard,
+    ColorCode,
+>>>>>>> Stashed changes
     Country,
     Ilan,
     Hsinchu,
@@ -97,7 +128,11 @@ export default {
       locationName: "彰化縣",
       mapWidth: "900",
       mapHeight: "900",
+<<<<<<< Updated upstream
       scaleMap: 7200,
+=======
+      scaleMap: 8000,
+>>>>>>> Stashed changes
       window: {
       width: 0,
       height: 0
@@ -137,8 +172,8 @@ export default {
       this.mapHeight = this.window.height
       this.mapWidth = this.window.width
 
-      // this.scaleMap = (default_scale * this.window.width) / default_width
-      console.log(this.scaleMap);
+      this.scaleMap = (default_scale * this.window.width) / default_width
+      console.log(this.scaleMap,'hello');
     },
     ...mapMutations(["increment2", "reset", "focusContrySetting"]),
   },
@@ -149,6 +184,7 @@ export default {
   destroyed() {
     window.removeEventListener('resize', this.handleResize)
   },
+
 }
 
 
@@ -213,9 +249,14 @@ body, html
   position: relative
   width: 375px
   height: 667px
+<<<<<<< Updated upstream
   margin-right: 10rem
   margin-top:3rem
 
+=======
+  margin-right: -5rem
+  // margin-top:3rem
+>>>>>>> Stashed changes
 
 
 .fade-enter-active, .fade-leave-active

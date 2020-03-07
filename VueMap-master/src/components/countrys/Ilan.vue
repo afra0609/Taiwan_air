@@ -7,7 +7,7 @@
       v-for="country in topoCountry"
       :key="country.d"
       @mouseenter="sendCountryName(country.location)"
-      @click="close(country.location)"
+      @click="getData(country.location)"
     >
       <path
         :d="country.d"
@@ -41,6 +41,7 @@ export default {
   ],
   data: function() {
     return {
+      clickCountry:'',
       CountryType: Ilan,
       mapStyle: {
         fill: "red"
@@ -65,18 +66,25 @@ export default {
   },
   methods: {
     sendCountryName(name) {
-      this.$emit("getCountryName", name);
+      if (this.clickCountry != "") {
+        this.$emit("getCountryName", this.clickCountry);
+      } else {
+        this.$emit("getCountryName", name);
+      }
     },
     async close(name) {
       var g = d3.selectAll(".townSVG");
-      await g.transition()
+      await g
+        .transition()
         .duration(900)
         .style("opacity", 0.0)
-        .attr(
-          "transform",
-          `scale(1)translate(0,0)`
-        );
-      await this.$emit("closemap", name)
+        .attr("transform", `scale(1)translate(0,0)`);
+      await this.$emit("closemap", name);
+    },
+    getData(name) {
+      console.log(name);
+      this.clickCountry = name;
+      this.$emit("getCountryName", this.clickCountry);
     }
   },
   computed: {
