@@ -1,7 +1,10 @@
-
 <template lang="pug">
   #app
     h3.title {{locationName}}
+<<<<<<< Updated upstream
+=======
+    .closeBtn(@click='closemap')   
+>>>>>>> Stashed changes
     .mapRapper(:style="{width: mapWidthpx, height: mapHeightpx}")
       Country(:width="mapWidth" :height="mapHeight" @getCountryName="showName" :scale="scaleMap" ref="_country")
       //- transition-group(name="fade")
@@ -27,9 +30,18 @@
       Taitung(@closemap="closemap" @getCountryName="showName" v-if="focusContry['臺東縣']" :width="mapWidth" :height="mapHeight"  :scale="scaleMap" :zoom="zoom")
       Taoyuan(@closemap="closemap" @getCountryName="showName" v-if="focusContry['桃園市']" :width="mapWidth" :height="mapHeight"  :scale="scaleMap" :zoom="zoom")
       Yunlin(@closemap="closemap" @getCountryName="showName" v-if="focusContry['雲林縣']" :width="mapWidth" :height="mapHeight"  :scale="scaleMap" :zoom="zoom")
+<<<<<<< Updated upstream
 
 
 
+=======
+      Banner 
+      informationBTN
+      Bigboard
+      ColorCode
+      localboard
+      operateBtn
+>>>>>>> Stashed changes
 
 </template>
 
@@ -57,17 +69,35 @@ import Taoyuan from './components/countrys/Taoyuan.vue'
 import Matsu from './components/countrys/Matsu.vue'
 import Kinmen from './components/countrys/Kinmen.vue'
 
+<<<<<<< Updated upstream
 import Country from "./components/countrys/Country";
 import decorate from"./components/decorate";
+=======
+import Country from "./components/countrys/Country"
+import Banner from"./components/Banner"
+import informationBTN from"./components/informationBTN"
+import Bigboard from "./components/Bigboard"
+import ColorCode from"./components/ColorCode"
+import localboard from"./components/localboard"
+import operateBtn from "./components/operateBtn"
+>>>>>>> Stashed changes
 import { mapState, mapMutations } from "vuex"; //註冊 action 和 state
-
 
 
 export default {
   name: "app",
   components: {
+<<<<<<< Updated upstream
     decorate,
+=======
+    Banner,
+    informationBTN,
+    Bigboard,
+    ColorCode,
+    localboard,
+>>>>>>> Stashed changes
     Country,
+    operateBtn,
     Ilan,
     Hsinchu,
     HsinchuCity,
@@ -97,7 +127,11 @@ export default {
       locationName: "彰化縣",
       mapWidth: "900",
       mapHeight: "900",
+<<<<<<< Updated upstream
       scaleMap: 7200,
+=======
+      scaleMap: 8000,
+>>>>>>> Stashed changes
       window: {
       width: 0,
       height: 0
@@ -160,11 +194,11 @@ export default {
   outline: red soild 1px
 
 .title
-  font-size: 4rem
+  font-size: 2.2rem
   z-index: 999
   position: absolute
-  right: calc(75%)
-  top: 10rem
+  right: calc(13%)
+  top: 4.5rem
   color: #4D7EA2
   // filter: drop-shadow(5px 5px 0px black)
 
@@ -199,6 +233,7 @@ body, html
 
 
 #app
+
   font-family:  Microsoft JhengHei 
   -webkit-font-smoothing: antialiased
   -moz-osx-font-smoothing: grayscale
@@ -208,21 +243,44 @@ body, html
   flex-direction: column
   justify-content: center
   align-items: center
+  margin-top: 4.3%
 
 .mapRapper
   position: relative
   width: 375px
   height: 667px
+<<<<<<< Updated upstream
   margin-right: 10rem
   margin-top:3rem
 
+=======
+  margin-right: -5rem
+  // margin-top:3rem
+>>>>>>> Stashed changes
 
+.closeBtn
+  position:fixed
+  top:0
+  left:0
+  font-size:2rem
+  z-index:999
 
 .fade-enter-active, .fade-leave-active
   transition: 5s
 
 .fade-enter, .fade-leave-to
   opacity: 0
+
+
+
+// .closeBtn
+//   width: 10%
+//   height: 30%
+//   background: #34c9eb
+//   margin-top: 12%
+
+
+
 
 
 </style>

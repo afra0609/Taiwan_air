@@ -6,6 +6,11 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="icon" href="<%= BASE_URL %>favicon.ico">
     <title>mapvue</title>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.1.0/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FitText.js/1.1/jquery.fittext.min.js"></script>
+
   </head>
   <body>
     <noscript>
@@ -14,4 +19,27 @@
     <div id="app"></div>
     <!-- built files will be auto injected -->
   </body>
+  <script>
+  // 時間---------------------------
+    $('#clock').fitText(1.0);
+
+    function update() {
+      $('#clock').html(moment().format('D. MMMM YYYY H:mm:ss'));
+    }
+
+    setInterval(update, 1000);
+
+// PM2.5視覺化-----------------------------------
+    $('.ia-radial').each(function(){
+  var utilslider = parseInt($(this).find("#precent").html()),
+      circle = $(this).find("#pie"),
+      radius = parseInt(circle.attr('r')),
+      circumf= 2 * radius * Math.PI,
+      percentV = (utilslider / 100) * circumf;
+
+  circle.css('strokeDasharray', percentV + " " + circumf);
+});
+
+  </script>
+
 </html>
