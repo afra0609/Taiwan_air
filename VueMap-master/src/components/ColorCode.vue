@@ -17,7 +17,7 @@ html,body
   width: 100%
   margin: 0
 
-
+@media (min-width: 768px)
 
 .colorboard
   width: 36%
@@ -28,6 +28,7 @@ html,body
   border: .5px solid #2A3561
   margin-left: 2.5%
   border-radius: 6px
+  z-index: 999
 
 
 
